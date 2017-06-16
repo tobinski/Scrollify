@@ -265,9 +265,11 @@ if touchScroll is false - update index
 				if(disabled===true) {
 					return true;
 				} else if(settings.standardScrollElements) {
-					if($(e.target).is(settings.standardScrollElements) || $(e.target).closest(settings.standardScrollElements).length) {
-						return true;
-					}
+                    if($(e.target).is(settings.standardScrollElements) || $(e.target).closest(settings.standardScrollElements).length) {
+                    	// calculate the next bottom index
+                        index = Math.max($(settings.section.concat(settings.standardScrollElements)).length - 1, 0);
+                        return true;
+                    }
 				}
 				if(!overflow[index]) {
 					e.preventDefault();
